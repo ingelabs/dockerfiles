@@ -1,0 +1,11 @@
+# Ghost URL
+export GHOST_URL=https://
+
+# Mail configuration
+export MAIL_TRANSPORT=
+export MAIL_SERVICE=
+export MAIL_USER=
+export MAIL_PASSWORD=
+export MAIL_HOST=
+export MAIL_PORT=
+export MAIL_SECURE=

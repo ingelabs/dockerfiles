@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  ghost:
+    image: ghost:4.34.3-alpine
+    restart: always
+    ports:
+      - 2368:2368
+    environment:
+      url: ${GHOST_URL}
+      mail__transport: ${MAIL_TRANSPORT}
+      mail__options__service: ${MAIL_SERVICE}
+      mail__options__host: ${MAIL_HOST}
+      mail__options__port: ${MAIL_PORT}
+      mail__options__secureConnection: ${MAIL_SECURE}
+      mail__options__auth__user: ${MAIL_USER}
+      mail__options__auth__pass: ${MAIL_PASSWORD}
+    volumes:
+      - ./ghost:/var/lib/ghost/content
+
+  nginx:
+    image: nginx
+    restart: always
+    depends_on:
+      - ghost
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx:/etc/nginx/conf.d/
